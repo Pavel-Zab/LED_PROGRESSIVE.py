@@ -1,0 +1,13 @@
+from pyb import Timer, Pin
+import time
+
+timmer = pyb.Timer(5, freq=500)
+channel = timmer.channel(4, Timer.PWM, pin=Pin('X2'), pulse_width_percent=20)
+while True :
+    for i in range(100) :
+        channel.pulse_width_percent(i)
+        time.sleep(0.1)
+        
+    for i in range(100) :
+        channel.pulse_width_percent(100-i)
+        time.sleep(0.1)
